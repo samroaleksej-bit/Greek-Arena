@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>НРИ Арена — Последний Миф</title>
+<meta name="description" content="Энкаунтеры арены в стиле греческой мифологии">
+<meta property="og:title" content="НРИ Арена — Последний Миф">
+<meta property="og:description" content="Пантеон энкаунтеров: Гера, Афина, Аид, Гефест, Гермес и Суд Олимпа">
+<meta property="og:image" content="images/olympus.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="images/olympus.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#05040a;min-height:100vh;overflow-x:hidden}
+body{font-family:'EB Garamond',serif;color:#c8a840;padding:40px 16px 60px;display:flex;flex-direction:column;align-items:center;position:relative}
+
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse at 20% 10%,rgba(80,20,20,0.25),transparent 50%),
+  radial-gradient(ellipse at 80% 90%,rgba(60,40,120,0.2),transparent 50%),
+  radial-gradient(ellipse at 50% 50%,rgba(20,10,30,0.4),transparent 70%);
+  pointer-events:none;z-index:0}
+
+body::after{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(circle at 10% 20%,rgba(255,255,255,0.4) 0,transparent 1px),
+  radial-gradient(circle at 80% 30%,rgba(255,255,255,0.3) 0,transparent 1px),
+  radial-gradient(circle at 30% 70%,rgba(255,255,255,0.35) 0,transparent 1px),
+  radial-gradient(circle at 70% 80%,rgba(255,255,255,0.3) 0,transparent 1px),
+  radial-gradient(circle at 50% 50%,rgba(255,255,255,0.25) 0,transparent 1px);
+  background-size:200px 200px,300px 300px,250px 250px,350px 350px,180px 180px;
+  pointer-events:none;z-index:0;opacity:0.6}
+
+.content{position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center}
+
+.header{text-align:center;margin-bottom:32px;position:relative}
+.header::before,.header::after{content:'';position:absolute;top:50%;width:60px;height:1px;background:linear-gradient(90deg,transparent,#c8a840,transparent)}
+.header::before{right:calc(100% + 20px)}
+.header::after{left:calc(100% + 20px)}
+.arena-title{font-family:'Cinzel Decorative',serif;font-size:clamp(28px,5vw,42px);color:#f0d078;letter-spacing:8px;text-shadow:0 0 30px rgba(200,168,64,0.4),0 0 60px rgba(200,100,40,0.2);font-weight:900}
+.arena-sub{font-family:'Cinzel',serif;font-size:clamp(10px,1.5vw,13px);color:#7a6428;letter-spacing:6px;margin-top:10px;font-weight:600}
+
+.carousel-wrap{width:100%;max-width:1200px;position:relative}
+
+.carousel{position:relative;overflow:hidden;border-radius:12px;background:rgba(10,8,4,0.6);padding:20px;border:1px solid rgba(200,168,64,0.2);box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 0 60px rgba(200,168,64,0.03)}
+
+.track{display:flex;transition:transform 0.7s cubic-bezier(.45,0,.15,1);will-change:transform}
+.slide{min-width:100%;padding:0 4px}
+
+.card-frame{width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#0a0806;position:relative;box-shadow:0 12px 40px rgba(0,0,0,0.9),0 0 0 1px rgba(200,168,64,0.3),0 0 40px rgba(200,168,64,0.1)}
+.card-frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+.nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;border:2px solid #c8a840;background:rgba(15,10,4,0.92);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.25s;z-index:20;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,0.6),0 0 20px rgba(200,168,64,0.15)}
+.nav-btn:hover{background:rgba(200,168,64,0.25);transform:translateY(-50%) scale(1.1);box-shadow:0 6px 25px rgba(0,0,0,0.8),0 0 30px rgba(200,168,64,0.4)}
+.nav-btn:active{transform:translateY(-50%) scale(0.95)}
+.nav-btn svg{width:22px;height:22px;stroke:#f0d078;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.nav-prev{left:-24px}
+.nav-next{right:-24px}
+
+.info-panel{margin-top:28px;padding:24px 32px;background:linear-gradient(180deg,rgba(245,232,208,0.06),rgba(237,224,194,0.04));border:1px solid rgba(200,168,64,0.25);border-radius:8px;text-align:center;max-width:900px;width:100%;position:relative;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.info-panel::before,.info-panel::after{content:'◆';position:absolute;top:-6px;color:#c8a840;font-size:10px;background:#05040a;padding:0 8px}
+.info-panel::before{left:20px}
+.info-panel::after{right:20px}
+
+.badge{display:inline-block;padding:5px 14px;border-radius:2px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;margin-bottom:12px;font-weight:700}
+.badge-perm{background:rgba(200,168,64,0.15);color:#f0d070;border:1px solid #c8a840;box-shadow:0 0 16px rgba(200,168,64,0.2)}
+.badge-temp{background:rgba(200,100,50,0.18);color:#e8a060;border:1px solid #c06820;box-shadow:0 0 16px rgba(200,100,50,0.2)}
+.badge-epic{background:rgba(180,100,220,0.2);color:#d090f8;border:1px solid #9040c0;box-shadow:0 0 20px rgba(180,100,220,0.3)}
+
+.info-title{font-family:'Cinzel Decorative',serif;font-size:clamp(22px,3vw,30px);color:#f0d078;margin-bottom:4px;font-weight:700;text-shadow:0 0 20px rgba(200,168,64,0.3)}
+.info-sub{font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(12px,1.5vw,15px);color:#a08548;margin-bottom:8px}
+.info-divider{width:100px;height:1px;background:linear-gradient(90deg,transparent,#c8a840 50%,transparent);margin:14px auto;position:relative}
+.info-divider::after{content:'◆';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#c8a840;font-size:10px;background:rgba(10,8,4,0.9);padding:0 8px}
+.info-body{font-family:'EB Garamond',serif;font-size:clamp(14px,1.8vw,17px);color:#d8b870;line-height:1.7;font-weight:400}
+.info-body p{margin:2px 0}
+.info-closing{font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(12px,1.5vw,15px);color:#a08548;margin-top:14px;letter-spacing:0.5px}
+
+.controls{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:28px}
+.dots{display:flex;gap:12px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;background:#2a2010;cursor:pointer;transition:all 0.3s;border:1px solid #5a4018}
+.dot.active{background:#c8a840;box-shadow:0 0 16px rgba(200,168,64,0.7);transform:scale(1.3);border-color:#f0d078}
+.dot:hover:not(.active){background:#5a4018;border-color:#8a6830}
+.counter{font-family:'Cinzel',serif;font-size:11px;color:#7a6428;letter-spacing:4px;font-weight:600}
+.counter-current{color:#f0d078;font-weight:700}
+
+.footer{margin-top:48px;font-family:'Cinzel',serif;font-size:10px;color:#4a3818;letter-spacing:3px;text-align:center}
+.footer a{color:#7a6428;text-decoration:none;transition:color 0.2s}
+.footer a:hover{color:#c8a840}
+
+@media (max-width:768px){
+  .nav-prev{left:8px}
+  .nav-next{right:8px}
+  .nav-btn{width:44px;height:44px}
+  .carousel{padding:12px}
+  .info-panel{padding:18px 16px}
+  .header::before,.header::after{display:none}
+}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.info-panel > *{animation:fadeIn 0.5s ease both}
+.info-title{animation-delay:0.1s}
+.info-sub{animation-delay:0.15s}
+.info-divider{animation-delay:0.2s}
+.info-body{animation-delay:0.25s}
+.info-closing{animation-delay:0.3s}
+</style>
+</head>
+<body>
+
+<div class="content">
+
+<div class="header">
+  <div class="arena-title">НРИ АРЕНА</div>
+  <div class="arena-sub">ПОСЛЕДНИЙ МИФ · ПАНТЕОН ЭНКАУНТЕРОВ</div>
+</div>
+
+<div class="carousel-wrap">
+  <div class="carousel">
+    <div class="track" id="track">
+      <div class="slide"><div class="card-frame"><img src="images/hera.png" alt="Ревность Геры" loading="lazy"></div></div>
+      <div class="slide"><div class="card-frame"><img src="images/athena.png" alt="Нить Ариадны" loading="lazy"></div></div>
+      <div class="slide"><div class="card-frame"><img src="images/hades.png" alt="Прилив Леты" loading="lazy"></div></div>
+      <div class="slide"><div class="card-frame"><img src="images/hephaestus.png" alt="Гнев Земли" loading="lazy"></div></div>
+      <div class="slide"><div class="card-frame"><img src="images/hermes.png" alt="Голос Лабиринта" loading="lazy"></div></div>
+      <div class="slide"><div class="card-frame"><img src="images/olympus.png" alt="Суд Олимпа" loading="lazy"></div></div>
+    </div>
+
+    <button class="nav-btn nav-prev" onclick="prev()" aria-label="Предыдущий">
+      <svg viewBox="0 0 24 24"><polyline points="15 6 9 12 15 18"></polyline></svg>
+    </button>
+    <button class="nav-btn nav-next" onclick="next()" aria-label="Следующий">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+    </button>
+  </div>
+
+  <div class="info-panel" id="info"></div>
+
+  <div class="controls">
+    <div class="dots" id="dots"></div>
+    <div class="counter" id="counter"></div>
+  </div>
+</div>
+
+<div class="footer">
+  НРИ АРЕНА · КРУГ МАСТЕРОВ
+</div>
+
+</div>
+
+<script>
+const data = [
+  {
+    title: "«Ревность Геры»",
+    sub: "Постоянный энкаунтер · Гера",
+    badge: "perm",
+    body: [
+      "Гера тайно выбирает любимца среди воинов.",
+      "Все атаки против него наносятся с помехой.",
+      "Фаворит не знает о защите. Каждые 2 раунда богиня меняет решение."
+    ],
+    closing: "Её расположение — не дар. Это каприз."
+  },
+  {
+    title: "«Нить Ариадны»",
+    sub: "Постоянный энкаунтер · Афина",
+    badge: "perm",
+    body: [
+      "Один воин получает нить — он видит всю карту и всех противников.",
+      "Пока нить у тебя — не можешь атаковать первым.",
+      "Передать нить: действие при физическом контакте."
+    ],
+    closing: "Знание даёт всё. И связывает руки."
+  },
+  {
+    title: "«Прилив Леты»",
+    sub: "Временный энкаунтер · Аид",
+    badge: "temp",
+    body: [
+      "Один раунд: весь лабиринт затоплен.",
+      "Труднопроходимая местность везде.",
+      "Телосложение СЛ 13 в конце раунда.",
+      "Провал — Истощение 1 до конца арены."
+    ],
+    closing: "Лета не убивает. Она забирает."
+  },
+  {
+    title: "«Гнев Земли»",
+    sub: "Временный энкаунтер · Гефест",
+    badge: "temp",
+    body: [
+      "Каждый ход: зоны с 2 и более воинами получают обвал.",
+      "Ловкость СЛ 13 — успех: 1d6, провал: 3d6 и скорость 0.",
+      "Обломки остаются как труднопроходимая местность."
+    ],
+    closing: "Земля помнит, кто где стоял."
+  },
+  {
+    title: "«Голос Лабиринта»",
+    sub: "Временный энкаунтер · Гермес",
+    badge: "temp",
+    body: [
+      "В начале каждого хода — спасбросок основного стата СЛ 13.",
+      "Провал: все броски этого раунда совершаются с помехой."
+    ],
+    closing: "Лабиринт повторяет тебя. Искажённо."
+  },
+  {
+    title: "«Суд Олимпа»",
+    sub: "Эпический энкаунтер · ≤1 за арену",
+    badge: "epic",
+    body: [
+      "Лабиринт замирает. Пятеро смотрели на тебя с самого начала.",
+      "Сила · Ловкость · Мудрость — СЛ 14 каждый. Считай успехи.",
+      "МГ бросает d5 — бог выносит вердикт.",
+      "2–3 успеха: благословение до конца арены.",
+      "0–1 успех: проклятие до конца арены."
+    ],
+    closing: "После — лабиринт больше не перестраивается. Финал начался."
+  }
+];
+
+const badgeLabels = { perm: "ПОСТОЯННЫЙ", temp: "ВРЕМЕННЫЙ", epic: "ЭПИЧЕСКИЙ" };
+
+let current = 0;
+const track = document.getElementById('track');
+const info = document.getElementById('info');
+const dotsEl = document.getElementById('dots');
+const counter = document.getElementById('counter');
+
+data.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goTo(i);
+  dotsEl.appendChild(dot);
+});
+
+function update() {
+  track.style.transform = `translateX(-${current * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  const d = data[current];
+  info.innerHTML = `
+    <div class="badge badge-${d.badge}">${badgeLabels[d.badge]}</div>
+    <div class="info-title">${d.title}</div>
+    <div class="info-sub">${d.sub}</div>
+    <div class="info-divider"></div>
+    <div class="info-body">${d.body.map(l => `<p>${l}</p>`).join('')}</div>
+    <div class="info-closing">${d.closing}</div>
+  `;
+  counter.innerHTML = `<span class="counter-current">${String(current + 1).padStart(2, '0')}</span> / ${String(data.length).padStart(2, '0')}`;
+}
+
+function next() { current = (current + 1) % data.length; update(); }
+function prev() { current = (current - 1 + data.length) % data.length; update(); }
+function goTo(i) { current = i; update(); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') next();
+});
+
+let touchStart = 0;
+document.querySelector('.carousel').addEventListener('touchstart', (e) => {
+  touchStart = e.touches[0].clientX;
+}, {passive: true});
+document.querySelector('.carousel').addEventListener('touchend', (e) => {
+  const diff = touchStart - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+}, {passive: true});
+
+update();
+</script>
+
+</body>
+</html>
