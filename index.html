@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Пантеон Олимпа — энкаунтеры арены в стиле греческой мифологии">
+<meta property="og:title" content="Пантеон Олимпа — НРИ Арена">
+<meta property="og:description" content="Пять богов вершат судьбу лабиринта. И один Суд в конце.">
+<meta property="og:image" content="assets/img/olympus.png">
+<meta property="og:type" content="website">
+<title>Пантеон Олимпа — Последний Миф</title>
+<link rel="icon" type="image/png" href="assets/img/olympus.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <p class="header-rune">Пантеон Олимпа</p>
+  <h1>Последний Миф</h1>
+  <p class="header-sub">Пятеро смотрят с начала. Один вынесет вердикт.</p>
+</header>
+
+<main>
+
+  <!-- ── КАРУСЕЛЬ ── -->
+  <section class="carousel-section">
+    <div class="carousel-track-wrap" id="carouselWrap">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-slide" data-index="0">
+          <img src="assets/img/hera.png" alt="Ревность Геры — Постоянный энкаунтер">
+        </div>
+        <div class="carousel-slide" data-index="1">
+          <img src="assets/img/athena.png" alt="Нить Ариадны — Постоянный энкаунтер">
+        </div>
+        <div class="carousel-slide" data-index="2">
+          <img src="assets/img/hades.png" alt="Прилив Леты — Временный энкаунтер">
+        </div>
+        <div class="carousel-slide" data-index="3">
+          <img src="assets/img/hephaestus.png" alt="Гнев Земли — Временный энкаунтер">
+        </div>
+        <div class="carousel-slide" data-index="4">
+          <img src="assets/img/hermes.png" alt="Голос Лабиринта — Временный энкаунтер">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Навигация -->
+    <button class="carousel-btn carousel-btn-prev" id="btnPrev" aria-label="Предыдущий">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="carousel-btn carousel-btn-next" id="btnNext" aria-label="Следующий">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    <!-- Точки -->
+    <div class="carousel-dots" id="carouselDots">
+      <button class="dot active" data-goto="0" aria-label="Ревность Геры"></button>
+      <button class="dot"        data-goto="1" aria-label="Нить Ариадны"></button>
+      <button class="dot"        data-goto="2" aria-label="Прилив Леты"></button>
+      <button class="dot"        data-goto="3" aria-label="Гнев Земли"></button>
+      <button class="dot"        data-goto="4" aria-label="Голос Лабиринта"></button>
+    </div>
+
+    <!-- Счётчик -->
+    <p class="carousel-counter"><span id="counterCur">1</span> / <span id="counterTotal">5</span></p>
+  </section>
+
+  <!-- ── РАЗДЕЛИТЕЛЬ ── -->
+  <div class="epic-divider">
+    <span class="epic-divider-line"></span>
+    <span class="epic-divider-text">Эпический энкаунтер</span>
+    <span class="epic-divider-line"></span>
+  </div>
+
+  <!-- ── ЭПИЧЕСКАЯ КАРТОЧКА ── -->
+  <section class="epic-section">
+    <div class="epic-card-wrap">
+      <img src="assets/img/olympus.png" alt="Суд Олимпа — Эпический энкаунтер" class="epic-img">
+      <div class="epic-glow"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>Да пребудут с вами боги</span>
+    <span class="footer-ornament">&#10022;</span>
+    <span>Удачи в лабиринте</span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
